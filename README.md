@@ -22,5 +22,5 @@ Then use it:
 ```js
 const isInternetAvailable = require('is-internet-available');
 
-isInternetAvailable.then(console.log);
+isInternetAvailable().then(console.log);
 ```
