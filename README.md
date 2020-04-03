@@ -66,6 +66,10 @@ service.on('status', (status) => {
 
 ## changelog
 
+### version 2.1.1
+
+* updated package.json keywords to help find it easier
+
 ### version 2.1.0
 
 Features:
