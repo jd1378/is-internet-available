@@ -1,6 +1,6 @@
 {
   "name": "is-internet-available",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Checks if internet is available using http2, node v8.4.0+ only",
   "main": "src/index.js",
   "scripts": {
@@ -13,7 +13,16 @@
   "keywords": [
     "connection",
     "connectivity",
-    "internet"
+    "is",
+    "internet",
+    "connected",
+    "network",
+    "reachable",
+    "reachability",
+    "detect",
+    "online",
+    "is-online",
+    "offline"
   ],
   "author": "javad mnjd",
   "license": "MIT",
