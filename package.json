@@ -1,11 +1,14 @@
 {
   "name": "is-internet-available",
-  "version": "2.1.1",
+  "version": "3.0.0",
   "description": "Checks if internet is available using http2, node v8.4.0+ only",
   "main": "src/index.js",
   "scripts": {
     "test": "node ./src/test.js"
   },
+  "files": [
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "git@github.com:jd1378/is-internet-available.git"

@@ -1,9 +1,16 @@
 const http2 = require('http2');
 
-module.exports = function isInternetAvailable(testUrl='https://www.google.com') {
+/**
+ * @param {Object} [options]
+ * @param {String} [options.authority]
+ * @param {Object} [options.options]
+ */
+function isInternetAvailable(options = {
+  authority: 'https://www.google.com',
+}) {
+  if (!options.authority) options.authority = 'https://www.google.com';
   return new Promise((resolve) => {
-    const client = http2.connect(testUrl);
-    client.on('connect', () => {
+    const client = http2.connect(options.authority, options.options, () => {
       resolve(true);
       client.destroy();
     });
@@ -12,4 +19,6 @@ module.exports = function isInternetAvailable(testUrl='https://www.google.com') 
       client.destroy();
     });
   });
-};
+}
+
+module.exports = isInternetAvailable;

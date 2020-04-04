@@ -8,13 +8,15 @@ By default this package relies on www.google.com being available and certificate
 
 You can use any other URL for the test
 
+Please check changelogs after each release
+
 It has two exports:
 
-### function `isInternetAvailable` (testUrl?: '<https://www.google.com>')
+### function `isInternetAvailable` ({ authority?: '<https://www.google.com>', options?: undefined })
 
 * returns a Promise that resolves to true or false
 
-### class `InternetAvailabilityService` (rate?: number [10 * 1000 ms], testUrl?: '<https://www.google.com>' )
+### class `InternetAvailabilityService` (rate?: 10 * 1000, authority?: '<https://www.google.com>', options?: undefined )
 
 * emits `'status'` (`true`|`false`) - (only when it changes)
 * emits `'checking'` - when starting to run the check
@@ -46,14 +48,21 @@ service.on('status', (status) => {
 });
 ```
 
-Since v2.1.0 you can also use against a custom URL:
+You can also use against a custom Authority:
 
 ```js
 const { isInternetAvailable, InternetAvailabilityService } = require('is-internet-available');
 
-isInternetAvailable("http://localhost").then(console.log);
+isInternetAvailable({ authority: 'http://localhost' }).then(console.log);
 // or
-const service = new InternetAvailabilityService(1000, "http://localhost");
+const service = new InternetAvailabilityService({
+  authority: 'http://localhost',
+  rate: 1000, // the wait time between checks
+  // options: {
+    // options that you may want to pass to http2.connect method
+  //}
+});
+
 service.on('status', (status) => {
   if (status) {
     console.log('localhost is now available');
@@ -65,6 +74,13 @@ service.on('status', (status) => {
 ```
 
 ## changelog
+
+### version 3.0.0
+
+Breaking changes:
+
+* corrected options naming to match node's http2.connect method
+* now accepts options to pass to the http2.connect method
 
 ### version 2.1.1
 
